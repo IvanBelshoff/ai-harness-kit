@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  cli:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm run compose:all
+      - run: npm run build
+      - run: npm test
+
+  templates:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        template: [node-api, vite-react-tailwind, vite-react-tailwind-analitico]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci
+      - run: npm run compose:all
+      - run: npm run build -w @ai-harness/cli
+      - run: node packages/cli/dist/create-harness.js /tmp/harness-app --template ${{ matrix.template }}
+      - run: cd /tmp/harness-app && npm install
+      - run: cd /tmp/harness-app && node ${{ github.workspace }}/packages/cli/dist/index.js doctor
+      - run: cd /tmp/harness-app && node ${{ github.workspace }}/packages/cli/dist/index.js verify

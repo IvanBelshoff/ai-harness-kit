@@ -1,0 +1,30 @@
+{
+  "name": "@ai-harness/cli",
+  "version": "0.1.0",
+  "description": "CLI for AI Harness: init, verify, doctor, mirror, harvest",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "harness": "./dist/index.js",
+    "create-harness": "./dist/create-harness.js"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts src/create-harness.ts --format esm --dts --clean && node ../../scripts/copy-templates-to-cli.mjs",
+    "test": "vitest run",
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "tsup": "^8.4.0",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "ai-harness-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open source Harness Kit: CLI, MCP and template catalog for AI-assisted development",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @ai-harness/cli && npm run build -w @ai-harness/mcp",
+    "test": "npm run test -w @ai-harness/cli",
+    "compose": "node scripts/compose-template.mjs",
+    "compose:all": "node scripts/compose-template.mjs --all"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
