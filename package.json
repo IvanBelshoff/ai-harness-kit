@@ -11,7 +11,8 @@
     "build": "npm run build -w @ai-harness/cli && npm run build -w @ai-harness/mcp",
     "test": "npm run test -w @ai-harness/cli",
     "compose": "node scripts/compose-template.mjs",
-    "compose:all": "node scripts/compose-template.mjs --all"
+    "compose:all": "node scripts/compose-template.mjs --all",
+    "e2e:local": "node scripts/e2e-local.mjs"
   },
   "engines": {
     "node": ">=20"

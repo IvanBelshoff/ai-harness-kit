@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        template: [node-api, vite-react-tailwind, vite-react-tailwind-analitico]
+        template: [node-api, vite-react-tailwind, vite-react-tailwind-analitico, vite-react-tailwind-design-system]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

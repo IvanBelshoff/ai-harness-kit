@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { Server } from '@modelcontextprotocol/sdk/server/index.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import {
@@ -81,7 +82,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
       }
     }
     if (name === 'run_verify') {
-      const out = execSync('npx @ai-harness/cli verify', { cwd: root, encoding: 'utf8' })
+      const cli =
+        process.env.HARNESS_CLI ??
+        path.join(path.dirname(fileURLToPath(import.meta.url)), '../../cli/dist/index.js')
+      const out = execSync(`node "${cli}" verify`, { cwd: root, encoding: 'utf8' })
       return { content: [{ type: 'text', text: out }] }
     }
     throw new Error(`Unknown tool: ${name}`)

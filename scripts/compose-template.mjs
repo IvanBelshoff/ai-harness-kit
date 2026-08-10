@@ -25,27 +25,29 @@ function mergeDir(src, dest) {
 }
 
 const compositions = [
-  { preset: 'node-api', stack: 'node-api', domain: 'crud-api' },
-  { preset: 'vite-react-tailwind', stack: 'vite-react-tailwind', domain: 'spa-base' },
+  { preset: 'node-api', stack: 'node-api', domains: ['crud-api'] },
+  { preset: 'vite-react-tailwind', stack: 'vite-react-tailwind', domains: ['spa-base'] },
   {
     preset: 'vite-react-tailwind-analitico',
     stack: 'vite-react-tailwind',
-    domain: 'analitico'
+    domains: ['spa-base', 'analitico']
   },
   {
     preset: 'vite-react-tailwind-design-system',
     stack: 'vite-react-tailwind',
-    domain: 'design-system'
+    domains: ['spa-base', 'design-system']
   }
 ]
 
-function composeOne({ preset, stack, domain }) {
+function composeOne({ preset, stack, domains }) {
   const out = path.join(templatesDir, 'presets', preset)
   if (fs.existsSync(out)) fs.rmSync(out, { recursive: true, force: true })
   fs.mkdirSync(out, { recursive: true })
 
   mergeDir(path.join(templatesDir, 'stacks', stack), out)
-  if (domain) mergeDir(path.join(templatesDir, 'domains', domain), out)
+  for (const domain of domains ?? []) {
+    mergeDir(path.join(templatesDir, 'domains', domain), out)
+  }
 }
 
 const args = process.argv.slice(2)

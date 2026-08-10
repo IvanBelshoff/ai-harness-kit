@@ -10,8 +10,8 @@
       "domain": null,
       "maturity": 1,
       "commands": {
-        "create": "npx @ai-harness/cli init --template harness-only",
-        "initBrownfield": "npx @ai-harness/cli init --template harness-only"
+        "create": "npx -p @ai-harness/cli harness init --template harness-only",
+        "initBrownfield": "npx -p @ai-harness/cli harness init --template harness-only"
       },
       "includes": ["AGENTS.md", "docs/harness/", "harness/controls/"]
     },
@@ -23,8 +23,8 @@
       "domain": "crud-api",
       "maturity": 3,
       "commands": {
-        "create": "npx create-harness@latest my-app --template node-api",
-        "initBrownfield": "npx @ai-harness/cli init --template harness-only"
+        "create": "npx -p @ai-harness/cli harness init my-app --template node-api",
+        "initBrownfield": "npx -p @ai-harness/cli harness init --template harness-only"
       },
       "includes": ["add-endpoint", "Task invariantes", "verify-slice typecheck+test"]
     },
@@ -36,8 +36,8 @@
       "domain": "spa-base",
       "maturity": 3,
       "commands": {
-        "create": "npx create-harness@latest my-app --template vite-react-tailwind",
-        "initBrownfield": "npx @ai-harness/cli init --template harness-only"
+        "create": "npx -p @ai-harness/cli harness init my-app --template vite-react-tailwind",
+        "initBrownfield": "npx -p @ai-harness/cli harness init --template harness-only"
       },
       "includes": ["add-component", "stack.md Tailwind", "verify-slice lint+test+build"]
     },
@@ -49,8 +49,8 @@
       "domain": "analitico",
       "maturity": 3,
       "commands": {
-        "create": "npx create-harness@latest my-app --template vite-react-tailwind-analitico",
-        "initBrownfield": "npx @ai-harness/cli init --template harness-only"
+        "create": "npx -p @ai-harness/cli harness init my-app --template vite-react-tailwind-analitico",
+        "initBrownfield": "npx -p @ai-harness/cli harness init --template harness-only"
       },
       "includes": ["add-component", "add-tracking-event", "verify-slice vitest+eslint"]
     },
@@ -62,8 +62,8 @@
       "domain": "design-system",
       "maturity": 3,
       "commands": {
-        "create": "npx create-harness@latest my-app --template vite-react-tailwind-design-system",
-        "initBrownfield": "npx @ai-harness/cli init --template harness-only"
+        "create": "npx -p @ai-harness/cli harness init my-app --template vite-react-tailwind-design-system",
+        "initBrownfield": "npx -p @ai-harness/cli harness init --template harness-only"
       },
       "includes": ["adjust-primary-button", "tokens.css", "verify-slice build+test"]
     }
